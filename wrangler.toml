@@ -1,0 +1,4 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "minimal-static-site"
+compatibility_date = "2024-09-27"
+assets = { directory = "./content" }
