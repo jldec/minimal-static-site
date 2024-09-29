@@ -2,7 +2,7 @@
 
 Cloudflare recently announced some new features, including [this one](https://blog.cloudflare.com/builder-day-2024-announcements/#static-asset-hosting) for serving static files.
 
-Here's how you can deploy a static site from scratch.
+Here's how you can deploy a [static site](https://minimal-static-site.jldec.workers.dev) from scratch.
 
 ### 1. Create an empty directory and install wrangler
 These instructions assume that you already have [node](https://nodejs.org/) and [pnpm](https://pnpm.io/).
@@ -72,3 +72,5 @@ Deployed minimal-static-site triggers (5.77 sec)
   https://minimal-static-site.jldec.workers.dev
 Current Version ID: d0ecd041-b9a3-4e89-b168-baa394567839
 ```
+
+#### https://minimal-static-site.jldec.workers.dev
