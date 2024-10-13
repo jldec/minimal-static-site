@@ -1,3 +1,6 @@
+![Screenshot 2024-10-13 at 09 49 08](https://github.com/user-attachments/assets/6ba8c4c8-a005-4ada-af59-ceb712fb50a6)
+https://jldec.me/blog/building-a-static-site-with-cloudflare-workers
+
 # Minimal Static Site built with cloudflare workers
 
 Cloudflare recently announced some new features, including [this one](https://blog.cloudflare.com/builder-day-2024-announcements/#static-asset-hosting) for serving static files.
