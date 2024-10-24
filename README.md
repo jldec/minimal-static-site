@@ -3,9 +3,17 @@ https://jldec.me/blog/building-a-static-site-with-cloudflare-workers
 
 # Minimal Static Site built with cloudflare workers
 
-Cloudflare recently announced some new features, including [this one](https://blog.cloudflare.com/builder-day-2024-announcements/#static-asset-hosting) for serving static files.
+Cloudflare recently announced [static assets](https://blog.cloudflare.com/builder-day-2024-announcements/#static-asset-hosting) for workers.
 
-Here's how you can deploy a [static site](https://minimal-static-site.jldec.workers.dev) from scratch.
+You can now deploy static files with a worker, instead of shipping worker code in your Cloudflare Pages project.
+
+This makes it possible to add things like websockets using [durable objects](https://developers.cloudflare.com/durable-objects/) which are [not deployable](https://developers.cloudflare.com/workers/static-assets/compatibility-matrix/) via Cloudflare Pages.
+
+## DIY
+
+Here are the steps to deploy a static site **from scratch**. You can follow along or find the code in [GitHub](https://github.com/jldec/minimal-static-site).
+
+Less patient users can run `pnpm create cloudflare --experimental` and choose a static asset template as described in the [docs](https://developers.cloudflare.com/workers/static-assets/get-started/#1-create-a-new-worker-project-using-the-cli).
 
 ### 1. Create an empty directory and install wrangler
 These instructions assume that you already have [node](https://nodejs.org/) and [pnpm](https://pnpm.io/).
@@ -16,16 +24,17 @@ pnpm install wrangler
 ```
 
 ### 2. Create wrangler.toml
+You can choose your own worker name and content directory for assets.
 ```toml
 #:schema node_modules/wrangler/config-schema.json
 name = "minimal-static-site"
 compatibility_date = "2024-09-25"
 assets = { directory = "./content" }
 ```
-Note the new `assets` config, pointing to a content directory.
+The worker will serve all files in the assets directory on [routes](https://developers.cloudflare.com/workers/static-assets/routing/) starting at the worker root.
 
-### 3. Provide your content/index.html
-
+### 3. Create index.html in your content directory
+Here is some sample HTML to get started. Use any [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML), [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) and [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) files you like. Everything in the content directory will be uploaded and served, including [images](https://developer.mozilla.org/en-US/docs/Web/Media/images).
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -75,5 +84,13 @@ Deployed minimal-static-site triggers (5.77 sec)
   https://minimal-static-site.jldec.workers.dev
 Current Version ID: d0ecd041-b9a3-4e89-b168-baa394567839
 ```
+
+The result is live at [minimal-static-site.jldec.workers.dev](https://minimal-static-site.jldec.workers.dev)
+
+### What's next?
+Here are some suggestions for next steps:
+- Connect a [GitHub](https://developers.cloudflare.com/workers/ci-cd/builds/#get-started) repo.
+- Add a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).
+- Build your site with a [framework](https://developers.cloudflare.com/workers/frameworks/) like [Astro](https://developers.cloudflare.com/workers/frameworks/framework-guides/astro/).
 
 #### https://minimal-static-site.jldec.workers.dev
