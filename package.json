@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "wrangler": "^3.78.10"
+    "wrangler": "^4.61.1"
   },
   "scripts": {
     "dev": "wrangler dev",
